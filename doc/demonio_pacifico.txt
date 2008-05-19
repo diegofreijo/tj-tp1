@@ -1,0 +1,22 @@
+--------------------------------------
+Pacifico: juega intentando no perder
+--------------------------------------
+sea milista la lista de mis casillas disponibles para saltar
+obtener la/s casilla/s de milista de mayor valor
+saltar a la casilla de mayor valor, o alguna al azar entre las mayores
+
+
+Calcular valor: les asigna un valor alto a las casillas en donde hay mas chances de sobrevivir
+--------------------------------------
+// Se compone por la suma del valor dado por estar cerca del medio del tablero mas el valor dado por estar lejos del oponente
+valxmedio = 4 * importancia_medio / n (-casilla_actual^2 / n + casilla_actual)
+valxlejos = abs(casilla_actual - casilla_otro) * importancia_lejos
+devolver valxmedio + valxlejos
+
+
+Parametros
+-----------------------------
+// Que tan importante es quedar en el medio del tablero
+importancia_medio = n / 8
+// Que tan importante es quedar lejos del otro
+importancia_lejos = k / n 
