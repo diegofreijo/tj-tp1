@@ -8,12 +8,23 @@ namespace JuegoDemonios
 	{
 		static void Main(string[] args)
 		{
-			int n = 50;
-			int k = 7;
-			Demonio jugador1 = new Demonios.PasoAPaso(n, k);
-			Demonio jugador2 = new Demonios.Pacifico(n, k);
+			int n = 0;
+			int k = 0;
 			
-			Juego juego = new Juego(n, k, jugador1, jugador2);
+			// Levanto los parametros
+			System.Int32.TryParse(args[0], out n);
+			System.Int32.TryParse(args[1], out k);
+			
+			Demonio jugador1 = new Demonios.Hibrido(n, k, 1.0);
+			Demonio jugador2 = new Demonios.Hibrido(n, k, 0.0);
+			
+			Console.WriteLine("n: " + n);
+			Console.WriteLine("k: " + k);
+			Console.WriteLine("jugador1: " + jugador1.ToString());
+			Console.WriteLine("jugador2: " + jugador2.ToString());
+			
+			
+			Juego juego = new Juego(n, k, jugador1, jugador2, true);
 			ResultadoDelJuego resultado = juego.ComenzarJuego();
 
 			switch(resultado)

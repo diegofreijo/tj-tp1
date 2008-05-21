@@ -6,7 +6,7 @@ namespace JuegoDemonios
 {
 	using Casilla = Int32;
 
-	abstract class Demonio
+	abstract public class Demonio
 	{
 		public Demonio(int n, int k)
 		{
@@ -30,7 +30,7 @@ namespace JuegoDemonios
 			List<Casilla> ret = new List<Casilla>();
 
 			// Busco y agrego las casillas disponibles que esten en rango
-			for (Casilla c = Math.Max(posicion - k, 0); c < Math.Min(posicion + k, tablero.n); ++c)
+			for (Casilla c = Math.Max(posicion - k, 0); c <= Math.Min(posicion + k, tablero.n - 1); ++c)
 			{
 				if (tablero[c] == EstadoCasilla.Libre) ret.Add(c);
 			}
