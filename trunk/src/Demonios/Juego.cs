@@ -6,33 +6,33 @@ using JuegoDemonios;
 namespace JuegoDemonios
 {
 	using Casilla = Int32;
-	enum ResultadoDelJuego { Gano1, Gano2, Empataron, NoTermino };
-
-	class Juego
+	public enum ResultadoDelJuego { Gano1, Gano2, Empataron, NoTermino };
+	
+	public class Juego
 	{
 		private Tablero tablero;
 		private Demonio jugador1, jugador2;
 		private Casilla pos_j1, pos_j2;
 		private int k;
+		private bool interactivo;
 
-		public Juego(int n, int k, Demonio jugador1, Demonio jugador2)
+		public Juego(int n, int k, Demonio jugador1, Demonio jugador2, bool interactivo)
 		{
 			this.k = k;
 			this.tablero = new Tablero(n);
-			tablero.Quemar(0);
-			tablero.Quemar(n-1);
+			this.tablero.Quemar(0);
+			this.tablero.Quemar(n-1);
 
 			this.jugador1 = jugador1;
 			this.jugador2 = jugador2;
 			this.pos_j1 = 0;
 			this.pos_j2 = n-1;
+			
+			this.interactivo = interactivo;
 		}
 
 		public ResultadoDelJuego ComenzarJuego()
 		{
-			Console.WriteLine("n: " + tablero.n);
-			Console.WriteLine("k: " + k);
-			
 			while (EstadoDelJuego() == ResultadoDelJuego.NoTermino)
 			{
 				Casilla jugada1 = jugador1.Jugar(tablero, pos_j1, pos_j2, k);
@@ -51,10 +51,12 @@ namespace JuegoDemonios
 				ActualizarEstadoJugador1(jugada1);
 				ActualizarEstadoJugador2(jugada2);
 
-				MostrarTablero();
-
-				Console.WriteLine("--------------------------------------------");
-				Console.ReadLine();
+				if(interactivo)
+				{
+					MostrarTablero();
+					Console.WriteLine("--------------------------------------------");
+					Console.ReadLine();
+				}
 			}
 
 			return EstadoDelJuego();

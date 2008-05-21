@@ -37,7 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demonio.cs" />
-    <Compile Include="Demonios\Pacifico.cs" />
+    <Compile Include="Demonios\Azaroso.cs" />
+    <Compile Include="Demonios\Hibrido.cs" />
     <Compile Include="Demonios\PasoAPaso.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="Program.cs" />
