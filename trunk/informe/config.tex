@@ -1,0 +1,67 @@
+% Archivo de configuracion del informe
+% -------------------------------------------
+
+\usepackage[spanish,activeacute]{babel}			% Idioma castellano
+
+
+\usepackage{caratula}														% Caratula de Algo2
+%\usepackage[a4paper=true,pagebackref=true]{hyperref}				% Agrega la TOC al PDF e hipervinculos
+\usepackage{graphicx} 											% Permite insertar graficos
+\usepackage{fancyhdr}														% Permite manejo de cabeceras de pagina
+\usepackage{eufrak}															% Usado en el enunciado del trabajo
+\usepackage{latexsym}
+
+%\usepackage{algorithmic}													% Para escribir los algos
+%\usepackage{dsfont}															% Para el simbolo de naturales
+
+
+\usepackage[font=small,labelfont=bf]{caption}						% Para editar las captions
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{tikz}
+	\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{listings}
+\usepackage{lastpage}
+\usepackage{geometry}
+  \geometry{left=1cm, right=1cm, top=2cm, bottom=2cm}
+
+% Estilo de pagina para tener las cabeceras y pieseras
+\pagestyle{fancy}
+  \fancyhead[LO]{Teor'ia de Juegos}
+  \fancyhead[C]{Trabajo Práctico}
+  \fancyhead[RO]{Primer Cuatrimestre 2008}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  \fancyfoot[LO]{Freijo - Giusto}
+  \fancyfoot[C]{}
+  \fancyfoot[RO]{P\'agina \thepage\ de \pageref{LastPage}}
+  \renewcommand{\footrulewidth}{0.4pt}
+
+\parindent = 1.5 em 
+\parskip = 8 pt
+
+
+%%%%%%%%%%%%%%%% COMANDOS %%%%%%%%%%%%%%%%%%%%
+\newcommand{\todo}{{\large\textbf{TODO: }}}
+\newcommand{\paso}{\textsc{Paso }}
+\newcommand{\func}[1]{\verb"#1"}
+\newcommand{\imagen}[3]
+{
+	\begin{figure}[htbp]
+	  \centering
+	    \includegraphics[scale=#3]{../img/#1}
+	  \caption{#2}
+	\end{figure}
+}
+
+\newcommand{\nat}{\mathds{N}}
+\newcommand{\algoritmo}[3]{\noindent {\bf\underline{#1}:} #2 $\longrightarrow$ #3}
+\newcommand{\superindice}[1]{$^\textrm{{\tiny #1}}$}
+\newcommand{\subsubsubsection}[1]{\noindent\negrita{#1}
+
+}
+\newcommand{\negrita}[1]{{\bf #1}}
+
+%%%%%%%%%%%%%%%% FIN COMANDOS %%%%%%%%%%%%%%%%%%%%
