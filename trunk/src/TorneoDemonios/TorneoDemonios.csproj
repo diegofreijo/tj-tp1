@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ECEC5B70-347D-4ACD-87FE-A6B397849E74}</ProjectGuid>
+    <ProjectGuid>{E382E611-A548-4E39-ABA8-89FD326CB177}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JuegoDemonios</RootNamespace>
-    <AssemblyName>JuegoDemonios</AssemblyName>
+    <RootNamespace>TorneoDemonios</RootNamespace>
+    <AssemblyName>TorneoDemonios</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>JuegoDemonios.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,16 +36,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consola.cs" />
-    <Compile Include="Demonio.cs" />
-    <Compile Include="Demonios\Azaroso.cs" />
-    <Compile Include="Demonios\Hibrido.cs" />
-    <Compile Include="Demonios\Pacifico.cs" />
-    <Compile Include="Demonios\PasoAPaso.cs" />
-    <Compile Include="Juego.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tablero.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demonios\JuegoDemonios.csproj">
+      <Project>{ECEC5B70-347D-4ACD-87FE-A6B397849E74}</Project>
+      <Name>JuegoDemonios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

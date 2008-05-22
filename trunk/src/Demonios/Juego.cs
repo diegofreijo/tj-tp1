@@ -14,8 +14,7 @@ namespace JuegoDemonios
 		private Demonio jugador1, jugador2;
 		private Casilla pos_j1, pos_j2;
 		private int k;
-		private bool interactivo;
-
+		
 		public Juego(int n, int k, Demonio jugador1, Demonio jugador2, bool interactivo)
 		{
 			this.k = k;
@@ -27,8 +26,8 @@ namespace JuegoDemonios
 			this.jugador2 = jugador2;
 			this.pos_j1 = 0;
 			this.pos_j2 = n-1;
-			
-			this.interactivo = interactivo;
+
+            Consola.Interactivo = interactivo;
 		}
 
 		public ResultadoDelJuego ComenzarJuego()
@@ -40,23 +39,22 @@ namespace JuegoDemonios
 
 				if (!EsJugadaValida(pos_j1, jugada1))
 				{
-					Console.WriteLine("ERROR: el jugador 1 queria ir de " + pos_j1 + " a " + jugada1 + " y no puede");
+					Consola.WriteLine("ERROR: el jugador 1 queria ir de " + pos_j1 + " a " + jugada1 + " y no puede");
 				}
 
 				if (!EsJugadaValida(pos_j2, jugada2))
 				{
-					Console.WriteLine("ERROR: el jugador 2 queria ir de " + pos_j2 + " a " + jugada2 + " y no puede");
+					Consola.WriteLine("ERROR: el jugador 2 queria ir de " + pos_j2 + " a " + jugada2 + " y no puede");
 				}
 
 				ActualizarEstadoJugador1(jugada1);
 				ActualizarEstadoJugador2(jugada2);
 
-				if(interactivo)
-				{
-					MostrarTablero();
-					Console.WriteLine("--------------------------------------------");
-					Console.ReadLine();
-				}
+                Consola.WriteLine();
+                MostrarTablero();
+                Consola.WriteLine(); 
+                Consola.WriteLine("=================================================");
+                Consola.ReadLine();
 			}
 
 			return EstadoDelJuego();
@@ -64,66 +62,50 @@ namespace JuegoDemonios
 
 		private void MostrarTablero()
 		{
-			// Veo quien esta antes y quien despues
-			Casilla pos_min = Math.Min(pos_j1, pos_j2);
-			Casilla pos_max = Math.Max(pos_j1, pos_j2);
-			string nom_min, nom_max;
-			if (pos_min == pos_j1)
-			{
-				nom_min = "1";
-				nom_max = "2";
-			}
-			else
-			{
-				nom_min = "2";
-				nom_max = "1";
-			}
+			// Veo el rango de saltos para la proxima de cada jugador
+			int minr_jug1 = Math.Max(pos_j1 - k, 0);
+			int maxr_jug1 = Math.Min(pos_j1 + k, tablero.n-1);
+			int minr_jug2 = Math.Max(pos_j2 - k, 0);
+			int maxr_jug2 = Math.Min(pos_j2 + k, tablero.n-1);
 
-			// Dibujo los demonios
-			if (pos_j1 == pos_j2)
-			{
-				Console.Write(" ");
-				for (int i = 0; i < pos_j1; ++i)
-				{
-					Console.Write("  ");
-				}
-				Console.Write("1");
-				Console.WriteLine();
-				Console.Write(" ");
-				for (int i = 0; i < pos_j2; ++i)
-				{
-					Console.Write("  ");
-				}
-				Console.Write("2");
-				Console.WriteLine();
-			}
-			else
-			{
-				Console.Write(" ");
-				for (int i = 0; i < pos_min; ++i)
-				{
-					Console.Write("  ");
-				}
-				Console.Write(nom_min);
-				Console.Write(" ");
-				for (int i = pos_min + 1; i < pos_max; ++i)
-				{
-					Console.Write("  ");
-				}
-				Console.Write(nom_max);
-				Console.WriteLine();
-			}
-
+			// Dibujo al jugador 1
+			int i = 0;
+			for (i = 0; i < minr_jug1; ++i)
+				Consola.Write("  ");
+			Consola.Write("|-");
+			for (++i; i < pos_j1; ++i)
+				Consola.Write("--");
+			Consola.Write("-1");
+			for (++i; i <= maxr_jug1; ++i)
+				Consola.Write("--");
+			Consola.Write("| ");
+			Consola.WriteLine();
+			
+			
 			// Dibujo el tablero
-			Console.Write("|");
-			foreach(EstadoCasilla estado in tablero)
+			Consola.Write("|");
+			foreach (EstadoCasilla estado in tablero)
 			{
-				if(estado == EstadoCasilla.Libre)
-					Console.Write(" |");
-				else if(estado == EstadoCasilla.Quemada)
-					Console.Write("x|");
+				if (estado == EstadoCasilla.Libre)
+					Consola.Write(" |");
+				else if (estado == EstadoCasilla.Quemada)
+					Consola.Write("x|");
 			}
-			Console.WriteLine("");
+			Consola.WriteLine();
+
+
+			// Dibujo al jugador 2
+			i = 0;
+			for (i = 0; i < minr_jug2; ++i)
+				Consola.Write("  ");
+			Consola.Write("|-");
+			for (++i; i < pos_j2; ++i)
+				Consola.Write("--");
+			Consola.Write("-2");
+			for (++i; i <= maxr_jug2; ++i)
+				Consola.Write("--");
+			Consola.Write("| ");
+			Consola.WriteLine();
 		}
 
 		private void ActualizarEstadoJugador1(Casilla jugada)
