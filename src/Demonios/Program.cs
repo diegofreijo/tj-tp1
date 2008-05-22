@@ -12,11 +12,14 @@ namespace JuegoDemonios
 			int k = 0;
 			
 			// Levanto los parametros
-			System.Int32.TryParse(args[0], out n);
-			System.Int32.TryParse(args[1], out k);
+            if (args.GetLength(0) < 2 || !Int32.TryParse(args[0], out n) || !Int32.TryParse(args[1], out k))
+            {
+                Console.WriteLine("Uso: JuegoDemonios.exe n k");
+                return;
+            }
 			
-			Demonio jugador1 = new Demonios.Hibrido(n, k, 1.0);
-			Demonio jugador2 = new Demonios.Hibrido(n, k, 0.0);
+			Demonio jugador1 = new Demonios.Hibrido(n, k, 0.0);
+			Demonio jugador2 = new Demonios.Pacifico(n, k);
 			
 			Console.WriteLine("n: " + n);
 			Console.WriteLine("k: " + k);
