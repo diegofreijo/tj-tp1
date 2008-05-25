@@ -23,24 +23,30 @@
 En un principio no hay empate pero, como es infinito porque se repiten jugadas, podr'ia forzarse con una regla del tipo \it{cuando se repita una cierta cantidad de veces una jugada se puede pedir el empate}.
 \end{itemize}
 
+
 %\item Grafo con todos los estados del juego:
 \subsection{Grafo con todos los estados del juego}
 
-Vamos a analizar tres juegos: 
+A continuaci'on tenemos el gr'afico del \italica{Pong hau k'\ i} y de dos juegos que, aplicando unas reglas extra, se desprenden de 'el.
 
-\begin{itemize}
-\item \it{Pong hau k'\ i}
-\item \it{Pong hau k'\ i con una repetici'on}. Este es equivalente al anterior salvo porque al pasar por primera vez por un estado repetido se da fin al juego. El valor para este estado ser'a cero.
-\item \it{Pong hau k'\ i sin repetici'on}. Tambi'en equivalente al primero. Pero ac'a la modificaci'on est'a en que no se puede tomar un camino que lleve a un nodo repetido. Se ver'a mejor en el gr'afico que viene a continuaci'on.
-\end{itemize}
+\subsubsection{Pong hau k'\ i}
 
+\imagen{GrafoPongInfinito.png}{Juego Infinito}{0.5}
+\clearpage
 
-        \begin{figure}[p!hbt]
-		\centering
-		\includegraphics[angle=0, width=0.8\textwidth]{../img/GrafoPongInfinito.png}
-		\caption{Juego Inifinito}
-		\label{fig:Juego_Infinito}
-	\end{figure}
+\subsubsection{Pong hau k'\ i con una repetici'on}
+
+Este es similar al anterior salvo que al pasar por primera vez por un estado repetido se da fin al juego. Dos estados son iguales cuando las fichas se encuentran en la misma posici'on y el siguiente jugador en mover es el mismo. El valor para este estado ser'a cero.
+
+\imagenVertical{GrafoPongConEmpateBlanco.png}{Juego con hasta una repetici'on}{0.19}
+\clearpage
+
+\subsubsection{Pong hau k'\ i sin repetici'on}
+
+Tambi'en similar al primero. Pero ac'a la modificaci'on est'a en que no se puede tomar un camino que lleve a un nodo repetido. Se ver'a mejor en el gr'afico que viene a continuaci'on.
+
+\imagen{GrafoPongSinEmpateBlanco.png}{Juego donde no se permiten las repeticiones}{0.31}
+\clearpage
 
 
 %\item Valor del juego. Mejores estrategias.

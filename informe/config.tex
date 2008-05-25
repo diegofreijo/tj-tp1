@@ -51,7 +51,16 @@
 {
 	\begin{figure}[htbp]
 	  \centering
-	   % \includegraphics[scale=#3]{../img/#1}
+	    \includegraphics[scale=#3]{../img/#1}
+	  \caption{#2}
+	\end{figure}
+}
+
+\newcommand{\imagenVertical}[3]
+{
+	\begin{figure}[htbp]
+	  \centering
+	    \includegraphics[angle=90, scale=#3]{../img/#1}
 	  \caption{#2}
 	\end{figure}
 }
