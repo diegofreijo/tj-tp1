@@ -17,7 +17,7 @@ namespace JuegoDemonios.Demonios
 		{
 			importancia_medio = n / 6;
 			importancia_restantes = n / 2;
-			turnos_explorados = 2;
+			turnos_explorados = 4;
 		}
 
 		/// <summary>

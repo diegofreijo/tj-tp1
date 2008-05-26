@@ -24,10 +24,58 @@ Presentamos e implementamos una estrategia que decidimos bautizar Demonio \itali
 El algoritmo para decidir a que casillero saltar es el siguiente:
 
 
+\algoritmosc{Pacifico}{Hace todo lo posible por sobrevivir}
+\begin{algorithmic}[1]
+\STATE Buscar las jugadas posibles
+\STATE Calcular el valor de cada jugada
+\STATE Elegir las jugadas de valor maximo
+\RETURN De las jugadas de valor m'aximo, elegir la que se encuentra mas lejos del oponente
+\end{algorithmic}
 
 
 
-El c'odigo fuente de la estrategia y 'arbitro se pueden encontrar en la carpeta \italica{src}, junto a la implementaci'on de un torneo (una sucesi'on de jugadas variando el tama'no del tablero). Los binarios se encuentran en el directorio \italica{bin}.
+\algoritmosc{Valor}{Calcula el valor de una jugada}
+\begin{algorithmic}[1]
+\STATE Esta heur'istica requiere las siguientes tres variables (los valores fueron ajustados en base a experimentos realizados por el grupo)
+	\STATE \verb|importancia_medio| (que tan importante es estar en el medio del tablero) = n / 6
+	\STATE \verb|turnos_explorados| (cuantos turnos explorar en el futuro para ver cuantos casilleros me quedaran libres) = 2
+	\STATE \verb|importancia_restantes| (que tan importante es que quede un casillero mas en el turno futuro explorado) = n / 2
+\STATE El valor por medio es una funci'on cuadr'atica de concavidad negativa que toma valor m'aximo (\verb|importancia_medio|) en la mitad del tablero y se anula en los extremos del mismo. Se define como
+	$$4 * \frac{importancia\_medio}{n} * \left(-\frac{destino^2}{n} + destino\right)$$
+\STATE El valor por restantes averigua cual es la maxima cantidad de casilleros que quedar'an despu'es de explorar \verb|turnos_explorados| turnos y lo multiplica por \verb|importancia_restantes|.
+\RETURN La suma de valores por medio m'as valores por restantes.
+\end{algorithmic}
+
+\vspace{1em}
+
+El c'odigo fuente de la estrategia y  del 'arbitro se pueden encontrar en la carpeta \italica{src}, junto a la implementaci'on de un torneo (una sucesi'on de jugadas variando el tama'no del tablero y la posibilidad de salto de los jugadores). Los binarios se encuentran en el directorio \italica{bin}.
 
 
-%\end{enumerate}
+
+% Ejercicio 3
+\subsection{Falta de informaci'on de turnos anteriores}
+
+
+% Ejercicio 4
+\subsection{Agregado de informaci'on de partidas anteriores}
+De existir informaci'on sobre partidas anteriores, la estrategia a implementar podr'ia encontrar patrones de juego del oponente y utilizarlo para predecir a que casilla saltar'a. Se podr'ia ver reflejado en la valoraci'on por restantes, ya que al conocer el movimiento del contrincante se recorrer'ian los 'arboles del juego teniendo en cuenta las casillas que ser'an quemadas por 'este.
+
+
+% Ejercicio 5
+\subsection{Estados del juego}
+
+
+
+% Ejercicio 6
+\subsection{An'alisis exhaustivo}
+
+
+
+% Ejercicio 7
+\subsection{Estrategias dominadas del an'alisis exahustivo}
+
+
+% Ejercicio 8
+\subsection{C'alculo de la forma matricial}
+
+

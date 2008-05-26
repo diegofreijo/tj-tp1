@@ -18,7 +18,7 @@ namespace JuegoDemonios
                 return;
             }
 			
-			Demonio jugador1 = new Demonios.Hibrido(n, k, 0.0);
+			Demonio jugador1 = new Demonios.Azaroso(n, k);
 			Demonio jugador2 = new Demonios.Pacifico(n, k);
 			
 			Console.WriteLine("n: " + n);

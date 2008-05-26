@@ -2,26 +2,22 @@
 % -------------------------------------------
 
 \usepackage[spanish,activeacute]{babel}			% Idioma castellano
-
-
 \usepackage{caratula}														% Caratula de Algo2
 %\usepackage[a4paper=true,pagebackref=true]{hyperref}				% Agrega la TOC al PDF e hipervinculos
 \usepackage{graphicx} 											% Permite insertar graficos
 \usepackage{fancyhdr}														% Permite manejo de cabeceras de pagina
 \usepackage{eufrak}															% Usado en el enunciado del trabajo
 \usepackage{latexsym}
-
-%\usepackage{algorithmic}													% Para escribir los algos
+\usepackage{algorithmic}													% Para escribir los algos
 %\usepackage{dsfont}															% Para el simbolo de naturales
-
-
 \usepackage[font=small,labelfont=bf]{caption}						% Para editar las captions
+
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage[x11names, rgb]{xcolor}
-\usepackage{tikz}
-	\usetikzlibrary{snakes,arrows,shapes}
+%\usepackage{tikz}
+%	\usetikzlibrary{snakes,arrows,shapes}
 \usepackage{listings}
 \usepackage{lastpage}
 \usepackage{geometry}
@@ -46,7 +42,7 @@
 %%%%%%%%%%%%%%%% COMANDOS %%%%%%%%%%%%%%%%%%%%
 \newcommand{\todo}{{\large\textbf{TODO: }}}
 \newcommand{\paso}{\textsc{Paso }}
-\newcommand{\func}[1]{\verb"#1"}
+\newcommand{\verbatim}[1]{\verb|#1|}
 \newcommand{\imagen}[3]
 {
 	\begin{figure}[htbp]
@@ -66,7 +62,8 @@
 }
 
 \newcommand{\nat}{\mathds{N}}
-\newcommand{\algoritmo}[3]{\noindent {\bf\underline{#1}:} #2 $\longrightarrow$ #3}
+\newcommand{\algoritmosc}[2]{\vspace{2em} \noindent {\bf\underline{#1}:} #2}
+\newcommand{\algoritmo}[3]{\algoritmosc{#1}{#2} $\longrightarrow$ #3}
 \newcommand{\superindice}[1]{$^\textrm{{\tiny #1}}$}
 \newcommand{\subsubsubsection}[1]{\noindent\negrita{#1}
 
