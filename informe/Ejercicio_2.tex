@@ -29,14 +29,36 @@ En un principio no hay empate pero, como es infinito porque se repiten jugadas, 
 
 A continuaci'on tenemos el gr'afico del \italica{Pong hau k'\ i} y de dos juegos que, aplicando unas reglas extra, se desprenden de 'el.
 
+La representaci'on del tablero del juego utilizada es la dada en el enunciado. Si los nodos est'an numerados del 1 al 5 las casillas adyacentes son las siguientes: (1,5), (2,5), (3,5), (4,5), (1,3), (2,4), (3,4). Las fichas blancas est'an inicialmente en las casillas 1 y 2. Las fichas negras, en cambio, en las casillas 3 y 4.
+
+La convenci'on tomada para la representaci'on de los estados del juego es la siguiente: Se tienen dos pares ordenados. El primer par representa la posici'on de las fichas blancas y el segundo par la de las fichas negras. El n'umero que no est'a es la posici'on libre del tablero.
+
+En caso de necesitar una mejor visualizaci'on de las im'agenes, 'estas tambi'en se encuetran en la carpeta \italica{img}.
+
 \subsubsection{Pong hau k'\ i}
+
+Notar que tanto el juego donde empieza el blanco, como el que empieza el negro est'an contenidos en el mismo grafo.
+
+La \textquotedblleft ra'iz\textquotedblright  del grafo (la cual tiene salida blanca) representa el juego donde el comienzo es ejecutado por el jugador blanco.
+
+Hay un nodo que tiene fondo rayado. Si uno quisiera ver que sucede en el juego cuando empieza el jugador negro en lugar del blanco deber'ia de recorrer el grafo desde 'esta posici'on. La cual tiene el mismo valor que la \textquotedblleft ra'iz\textquotedblright pero el siguiente en mover es el jugador negro.
+
+Los nodos que no tienen alg'un eje que los comunique con otros nodos (llamemoslos hojas) marcan el final del juego. 'Estos estados determinan que alguno de los jugadores ha ganado. Qui'en gan'o est'a determinado por el 'ultimo en realizar movimiento, es decir, el que lleva a esa posici'on es el que gan'o.
 
 \imagen{GrafoPongInfinito.png}{Juego Infinito}{0.5}
 \clearpage
 
 \subsubsection{Pong hau k'\ i con una repetici'on}
 
-Este es similar al anterior salvo que al pasar por primera vez por un estado repetido se da fin al juego. Dos estados son iguales cuando las fichas se encuentran en la misma posici'on y el siguiente jugador en mover es el mismo. El valor para este estado ser'a cero.
+Este es similar al anterior salvo que al pasar por primera vez por un estado repetido se da fin al juego.
+
+Dos estados son iguales cuando las fichas se encuentran en la misma posici'on y el siguiente jugador en mover es el mismo. El valor para este estado ser'a cero.
+
+En el gr'afico las hojas representan el final del juego y no hay ciclos. Este grafo es en particular un 'arbol.
+
+Las hojas con fondo gris representan los empates, son la primer repetici'on de un estado en la rama que lleva hasta 'el.
+
+Al igual que en gr'afico anterior, las posiciones en las cuales alguno de los jugadores gan'o est'an en negrita. Y para saber qui'en gan'o hay que ver quien realiz'o la 'ultima movida.
 
 \imagenVertical{GrafoPongConEmpateBlanco.png}{Juego con hasta una repetici'on}{0.19}
 \clearpage
@@ -45,23 +67,81 @@ Este es similar al anterior salvo que al pasar por primera vez por un estado rep
 
 Tambi'en similar al primero. Pero ac'a la modificaci'on est'a en que no se puede tomar un camino que lleve a un nodo repetido. Se ver'a mejor en el gr'afico que viene a continuaci'on.
 
+'Este gr'afico tambi'en es un 'arbol y las hojas representan partidas ganadas (y perdidas), es decir, no hay empate.
+
 \imagen{GrafoPongSinEmpateBlanco.png}{Juego donde no se permiten las repeticiones}{0.31}
 \clearpage
 
 
 %\item Valor del juego. Mejores estrategias.
-%En un principio parece dificil determinarse a ciencia cierta si el juego tiene valor y m'as a'un, cu'al es dicho valor.
+\subsection{Valor del juego. Mejores estrategias}
+En un principio parece dif'icil determinarse cual es el valor del \italica{Pong hau k'\ i}. Adem'as, por sus caracter'isticas tampoco es posible aplicar el teorema de Kuhn, como para tener una certeza de si dicho valor existe.
 
-%Analisando el juego vimos que el \it{Pong hau k'\ i} es:
+Veamos que sucede con los otros dos juegos. Tanto el \italica{Pong hau k'\ i con una repetici'on}, como con el \italica{Pong hau k'\ i sin repetici'on} cumplen lo siguiente:
 
-%\begin{itemize}
-%\item de dos jugadores
-%\item de informaci'on perfecta
-%\end{itemize}
+\begin{itemize}
+\item son bipersonales,
+\item son de suma cero,
+\item son de informaci'on perfecta.
+\end{itemize}
 
-%Luego, aplicando el teorema de Kuhn, podemos asegurar que el juego \negrita{tiene valor}.
+Luego, aplicando el \italica{teorema de Kuhn} podemos asegurar que ambos juegos \negrita{tienen valor}.
 
+Adem'as ambos juegos tambi'en cumplen ser finitos y junto con lo anterior podemos afirmar que existe una estrategia conjunta que lleva dicho valor.
 
+La siguiente en ver es cu'al es ese valor. Veamos si podemos determinarlo a trav'es del grafo.
+
+\subsubsection{Valor del Pong hau k'\ i con una repetici'on}
+
+Como en 'este juego tenemos un conjunto de pagos sim'etrico respecto al cero y adem'as es de dos jugadores, de suma cero y de informaci'on perfecta entonces al menos uno de los dos jugadores puede forzar el empate.
+
+Veamos que el valor de este juego es cero y que, seg'un sea el caso, cualquiera de los dos puede forzar el empate.
+
+Si miramos el gr'afico podemos observar que antes de cada hoja que muestra que alguno gan'o (no es hoja de empate) hay una bifurcaci'on que pertenece al jugador que pierde que lleva a un empate.
+
+Es decir, si para una hoja determinada el ganador es el jugador negro, entonces la bifurcaci'on inmediatamente anterior pertenece al jugador blanco y adem'as lleva a un empate. Lo mismo si la hoja determina ganador al jugador blanco.
+
+Con bifurcaci'on inmediatamente anterior no decimos que es la jugada inmediatamente anterior sino que puede estar varias jugadas antes. Pero en el caso en que ambos jugadores sean racionales cuando se llegue a ese paso obviamente elegir'a la rama que lleva al empate y no la que lleva a la derrota.
+
+Vale destacar que al iniciar el jugador blanco puede mover para cualquiera de las dos posiciones de elecci'on inicial, ya que ambas ramas son sim'etricas y tienen las mismas chances de perder, ganar y empatar.
+
+Si bien el grafo s'olo muestra el juego para el comienzo del blanco, el an'alisis para el negro es an'aloga y muestra tambi'en que ambos fuerzan el empate.
+
+Finalmente, debido a que siempre se fuerza el empate, el valor del juego es cero.
+
+\subsubsection{Valor del Pong hau k'\ i sin repetici'on}
+
+En este juego los pagos son:
+\begin{itemize}
+\item 1 si el jugador gana,
+\item -1 si el jugador pierde.
+\end{itemize}
+
+No hay empate. Ya que la regla agregada no lo permite. 'Este an'alisis se ve plasmado en el gr'afico ya que a medida que se recorren las ramas del 'arbol las 'unicas opciones de pago son las antedichas.
+
+Para comenzar el jugador blanco puede mover en cualquiera de las dos opciones que tiene disponible ya que ambos sub'arboles son sim'etricos y tiene la misma cantidad de nodos ganadores que de perdedores.
+
+Por simplicidad supongamos que el jugador elige el sub'arbol derecho. El an'alisis es an'alago para el otro sub'arbol.
+
+La siguiente bifurcaci'on pertenece al jugador que mueve las fichas negras. La elecci'on ser'a hacia la derecha ya que si mueve en el otro sentido la estrategia ganadora ser'a del blanco.
+
+La siguiente movida (perteneciente al blanco) es una bifurcaci'on. Si elegime mover a la izquierda en la movida que sigue marca victoria para el negro. Luego mueve hacia la derecha.
+
+Luego de cuatro movidas sin elecci'on, sigue una bifurcaci'on perteneciente al jugador de las fichas negras. En caso que elija moverse al sub'arbol derecho las hojas del mismo son todas de valor -1. En cambio, si se mueve al sub'arbol izquierdo, 'este tiene una sola hoja la cual tiene valor 1. Con lo cual mueve a la izquierda y gana.
+
+Este seguimiento fue para el caso en que comienza el jugador de las fichas blancas. El caso en que comienzan las fichas negras es an'alogo y el ganador es el jugador blanco.
+
+Finalmente podemos afirmar que el jugador que empieza pierde. Esto hace que el juego tenga valor -1. Adem'as el jugador que mueve en segundo lugar tiene una \negrita{estrategia ganadora}.
+
+\subsection{Tama'no y/o caracter'isticas de la forma matricial de los juegos}
+
+En el \italica{Pong hau k'\ i} la matriz de pagos asociada es infinita debido a que las estrategias as'i lo son. Notar que los valores en las casillas no son infinitas, los 'unicos valores que toman son 1 y -1.
+
+En el \italica{Pong hau k'\ i con una repetici'on} la matriz de pagos no es infinita. Tendr'a una parte de la matriz del \italica{Pong hau k'\ i}. Las matrices son similares en todas las estrategias que no impliquen una repetici'on. Tambi'en aparecen estrategias nuevas que llevan al empate. Los valores para las estrategias convinada que llevan al empate (celdas de la matriz) es cero.
+
+En el \italica{Pong hau k'\ i sin repetici'on}, al igual que en el anterior, la matriz es finita. 'Esta matriz es igual a la anterior salvo porque no tiene las estrategias ni los pagos asociados a un empate.
+
+En los juegos finitos podr'iamos poner una cota en la cantidad de celdas de la matriz. 'Esta cota es la cantidad de hojas del 'arbol de juegos. Dicha cota es 20 para el \italica{Pong hau k'\ i sin repetici'on} y 80 para el \italica{Pong hau k'\ i con una repetici'on}.
 
 %Luego, si aplicamos la regla:
 %$$cuando\ se\ repita\ una\ cierta\ cantidad\ de\ veces\ una\ jugada\ se\ puede\ pedir\ el\ empate$$
