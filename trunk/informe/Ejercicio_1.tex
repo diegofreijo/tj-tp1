@@ -88,11 +88,46 @@ $$2^n * n * n = 2^n n^2$$
 
 % Ejercicio 6
 \subsection{An'alisis exhaustivo}
+El juego cumple las premisas del Teorema de Kuhn, es decir, cumple ser:
 
+\begin{itemize}
+\item de dos jugadores,
+\item de suma cero,
+\item de informaci'on perfecta.
+\end{itemize}
+
+Entonces el juego \negrita{tiene valor}.
+
+A continuaci'on tenemos el gr'afico del juego \italica{Demonios} para los valores N = 5 y K = 2.
+
+La convenci'on tomada para la representaci'on de los estados del juego es la siguiente:
+
+\begin{itemize}
+\item La posici'on del jugador 1.
+\item La posici'on del jugador 2.
+\item El estado de cada casilla del tablero.
+\end{itemize}
+
+\begin{itemize}
+\item \negrita{D1} y \negrita{D2} son los demonios, y la celda en la que se encuentra su nombre implica que la est'an ocupando. Notar que pueden estar en la misma casilla al mismo tiempo.
+\item Las celdas en blanco son las celdas vac'ias no quemadas,
+\item Las celdas marcadas con una \negrita{X} est'an quemadas.
+\end{itemize}
+
+\imagen{GrafoDemoniosN=5K=2.png}{Grafo del Juego Demonios para N = 5 y K = 2}{0.27}
+
+Veamos cu'al es el valor an'alizando el grafo de estados del mismo.
+
+Sabemos que en las hojas est'an todos los pagos asociados a las jugadas combinadas de ambos jugadores. Luego todos 'estos nodos contienen un empate. De hecho no hay forma de jugar para que alguno de los jugadores pierda (aunque 'este as'i lo desee).
+
+Finalmente el valor del juego es Cero.
 
 
 % Ejercicio 7
 \subsection{Estrategias dominadas del an'alisis exahustivo}
+En el \italica{Demonios} para N = 5 y K = 2 todos los valores de los pagos para cualquier estrategia combinada es igual, valen cero. Con lo cual no hay estrategias dominadas de manera estricta, pues necesitamos que uno de esos valores sea mayor estricto.
+
+Luego todas las estrategias est'an dominadas de manera d'ebil por todas las dem'as. Es decir para cualquier estrategia podr'iamos eliminar todas las dem'as y estar'iamos ganando, por definici'on, lo mismo o m'as. En este caso ganar'iamos exactamente lo mismo.
 
 
 % Ejercicio 8
