@@ -54,6 +54,7 @@ El c'odigo fuente de la estrategia y  del 'arbitro se pueden encontrar en la car
 
 % Ejercicio 3
 \subsection{Falta de informaci'on de turnos anteriores}
+La estrategia actual no considera los movimientos hechos por el oponente en los turnos anteriores. Es m'as, siquiera se preocupa por las que realiz'o 'el mismo. Solamente necesita el estado del tablero actual y las posiciones de ambos jugadores.
 
 
 % Ejercicio 4
@@ -63,6 +64,25 @@ De existir informaci'on sobre partidas anteriores, la estrategia a implementar p
 
 % Ejercicio 5
 \subsection{Estados del juego}
+El estado de un juego con $n$ y $k$ dados se puede definir como
+
+\begin{itemize}
+\item La posici'on del jugador 1.
+\item La posici'on del jugador 2.
+\item El estado de cada casilla del tablero.
+\end{itemize}
+
+Y cada una de estas variables puede tomar a lo sumo las siguientes cantidades de valores (respectivamente)
+
+\begin{itemize}
+\item $n$
+\item $n$
+\item $2^n$
+\end{itemize}
+
+Por lo que la cantidad de estados posibles del juego seria
+
+$$2^n * n * n = 2^n n^2$$
 
 
 
