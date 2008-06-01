@@ -52,14 +52,18 @@ El c'odigo fuente de la estrategia y  del 'arbitro se pueden encontrar en la car
 
 
 
+
 % Ejercicio 3
 \subsection{Falta de informaci'on de turnos anteriores}
 La estrategia actual no considera los movimientos hechos por el oponente en los turnos anteriores. Es m'as, siquiera se preocupa por las que realiz'o 'el mismo. Solamente necesita el estado del tablero actual y las posiciones de ambos jugadores.
 
 
+
+
 % Ejercicio 4
 \subsection{Agregado de informaci'on de partidas anteriores}
 De existir informaci'on sobre partidas anteriores, la estrategia a implementar podr'ia encontrar patrones de juego del oponente y utilizarlo para predecir a que casilla saltar'a. Se podr'ia ver reflejado en la valoraci'on por restantes, ya que al conocer el movimiento del contrincante se recorrer'ian los 'arboles del juego teniendo en cuenta las casillas que ser'an quemadas por 'este.
+
 
 
 % Ejercicio 5
@@ -83,6 +87,7 @@ Y cada una de estas variables puede tomar a lo sumo las siguientes cantidades de
 Por lo que la cantidad de estados posibles del juego seria
 
 $$2^n * n * n = 2^n n^2$$
+
 
 
 
@@ -123,6 +128,7 @@ Sabemos que en las hojas est'an todos los pagos asociados a las jugadas combinad
 Finalmente el valor del juego es Cero.
 
 
+
 % Ejercicio 7
 \subsection{Estrategias dominadas del an'alisis exahustivo}
 En el \italica{Demonios} para N = 5 y K = 2 todos los valores de los pagos para cualquier estrategia combinada es igual, valen cero. Con lo cual no hay estrategias dominadas de manera estricta, pues necesitamos que uno de esos valores sea mayor estricto.
@@ -130,7 +136,21 @@ En el \italica{Demonios} para N = 5 y K = 2 todos los valores de los pagos para 
 Luego todas las estrategias est'an dominadas de manera d'ebil por todas las dem'as. Es decir para cualquier estrategia podr'iamos eliminar todas las dem'as y estar'iamos ganando, por definici'on, lo mismo o m'as. En este caso ganar'iamos exactamente lo mismo.
 
 
+
 % Ejercicio 8
 \subsection{C'alculo de la forma matricial}
+La matriz estar'a conformada por tantas filas y columnas como \italica{estrategias} posibles posea cada jugador respectivamente. Dado que 'este es un juego sim'etrico, cada jugador puede realizar las mismas jugadas. Por lo tanto, la matriz ser'a sim'etrica. Por estrategia se entiende al un algoritmo que decide, dado un tablero con los respectivos casilleros quemados y las posiciones de los jugadores, a que casilla disponible el demonio debe saltar.
+
+Dado que cuanto m'as grande es $k$ m'as posibles casilleros para saltar tendr'an los jugadores, el caso en donde m'as jugadas disponibles tendr'an para realizar ser'a cuando $n = k$ (en realidad, como el casillero inicial comienza quemado, asumiremos que el mayor $k$ podr'a ser $n-1$).
+
+Para hallar la cota m'axima de la cantidad de jugadas de cierto jugador, asumo que juega s'olo para que no influyan los casilleros quemados por el oponente. Notar que de 'esta forma sigo calculando la mayor cantidad posible de jugadas, ya que al tener casillas quemadas por el oponente, la cantidad de casillas disponibles para saltar se disminuye en cada turno con lo que disminuyen la cantidad de saltos posibles y, por ende, de jugadas.
+
+Por lo tanto, considerando 'este juego donde s'olo hay un jugador y $k=n$, en el primer nivel el demonio puede saltar a $n-1$ casillas (todas menos donde se encuentra). Al realizar el primer salto, tiene la misma cantidad de casillas que antes para saltar excepto la actual: $n-2$. 'Este proceso se repite hasta que no queden mas casillas, por lo que ser'a $n-1$ veces. Todo 'ese camino de decisiones forma una rama del 'arbol de juego, desde la ra'iz hasta una hoja. Como a una hoja s'olo puede acceder un s'olo nodo (porque es una hoja), 'esta representa a una 'unica jugada. 
+
+Pero en cada decisi'on tomada a travez del 'arbol se descartaron muchas otras subramas. Cada una de 'estas desembocaban en nuevas jugadas. Al comienzo se eligi'o una de entre $n-1$ casillas, luego $n-2$, luego $n-3$, hasta que s'olo qued'o una. Por lo tanto la cantidad de desembocaduras en el recorrido del 'arbol (hojas) son
+
+$$(n-1)(n-2)\dots 1 = (n-1)! $$
+
+Por lo que la matriz de juego para $n$ y $k$ dados ser'a, a lo sumo, de $(n-1)!\times (n-1)!$.
 
 
